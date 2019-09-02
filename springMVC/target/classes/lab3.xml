@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 생성자로 주입 -->
+<!-- <bean id = "car" class="lab3.Car"> 
+	<constructor-arg name="model" value="GENESIS G70"/>
+	<constructor-arg name="price" value="4000"/>
+</bean> -->
+<!-- setter로 주입 -->
+<bean id = "car" class = "lab3.Car">
+	<property name="model" value="GENESIS G80"/>
+	<property name="price" value="4900"/>
+</bean>
+
+<!-- <bean id = "people" class="lab3.People">
+	<constructor-arg name="name" value="황성욱"/>
+	<constructor-arg name="phone" value="010.7146.9413"/>
+	<constructor-arg ref="car"/>
+</bean> -->
+<!-- <bean id = "people" class = "lab3.People">
+	<property name="name" value="황성욱"/>
+	<property name="phone" value="010.7146.9413"/>
+	<property name="car" ref="car"/>
+</bean> -->
+
+<bean id="license1" class="lab3.License" p:title="ocp" p:year="2019"/>
+<bean id="license2" class="lab3.License" p:title="sqld" p:year="2020"/>
+
+<!-- <bean id = "people" class = "lab3.People"
+	p:name="성욱"
+	p:phone="010-7146-9413"
+	p:car-ref="car">
+	<property name="licenses">
+		<list>
+			<ref bean="license1"/>
+			<ref bean="license2"/>
+		</list>
+	</property>
+	<property name="major">
+		<list>
+			<value>수학과</value>
+			<value>컴퓨터공학과</value>
+		</list>
+	</property>
+</bean> -->
+
+<!-- autowire -->
+<!-- <bean id = "people" class = "lab3.People"
+	p:name="성욱"
+	p:phone="010-7146-9413"
+	
+	autowire="byType">
+	<property name="car" ref="car"/>
+	<property name="licenses">
+		<list>
+			<ref bean="license1"/>
+			<ref bean="license2"/>
+		</list>
+	</property>
+	<property name="major">
+		<list>
+			<value>수학과</value>
+			<value>컴퓨터공학과</value>
+		</list>
+	</property>
+</bean> -->
+
+<bean id = "people" class = "lab3.People"
+	p:name="성욱"
+	p:phone="010-7146-9413"
+	autowire="byType"
+	scope="prototype">
+	<!-- <property name="car" ref="car"/> -->
+	<!-- <property name="licenses">
+		<list>
+			<ref bean="license1"/>
+			<ref bean="license2"/>
+		</list>
+	</property> -->
+	<property name="major">
+		<list>
+			<value>수학과</value>
+			<value>컴퓨터공학과</value>
+		</list>
+	</property>
+</bean>
+
+
+
+</beans>
